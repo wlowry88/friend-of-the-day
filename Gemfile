@@ -25,6 +25,10 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#ALL OUR GOOGLE SHIT
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2' 
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -58,5 +62,4 @@ group :production do
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
-gem "devise"
 gem "airbrake"

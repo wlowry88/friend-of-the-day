@@ -46,6 +46,7 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
+  gem "pry-rails"
   gem "guard-rspec", require: false
   gem "thin"
 end

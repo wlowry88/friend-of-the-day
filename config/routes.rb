@@ -4,7 +4,13 @@ Rails.application.routes.draw do
     resources :friends
   end
 
+  get 'sessions/new' => "sessions#new", as: 'new_session'
+  get 'sessions/destroy' => "sessions#destroy"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
+  root "static_pages#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

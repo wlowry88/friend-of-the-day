@@ -4,10 +4,11 @@ Rails.application.routes.draw do
     resources :friends
   end
 
-  get 'sessions/new' => "sessions#new", as: 'new_session'
-  get 'sessions/destroy' => "sessions#destroy"
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  resources :sessions, only: [:create, :destroy]
   
   root "static_pages#index"
 

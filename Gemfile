@@ -26,9 +26,7 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 #ALL OUR GOOGLE SHIT
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-google-oauth2' 
+gem "omniauth-google-oauth2"
 # Use unicorn as the app server
 # gem 'unicorn'
 

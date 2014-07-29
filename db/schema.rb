@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729202313) do
+ActiveRecord::Schema.define(version: 20140729215534) do
 
   create_table "friends", force: true do |t|
     t.string   "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140729202313) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
 end

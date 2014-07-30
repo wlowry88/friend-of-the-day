@@ -1,4 +1,9 @@
 <h1>Mnemonic</h1>
-
+  <% if logged_in? %>
+    <% 5.times do %>
+      <% random_friend = @friends.sample %>
+      <h3>Have you reached out to <%= random_friend.name %> ?</h3>
+    <% end %> 
+  <% end %>
 
 

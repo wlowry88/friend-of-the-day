@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :friends
+  has_many :friends
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -15,37 +15,38 @@ class User < ActiveRecord::Base
 
   def get_friends(auth)
     access_token = auth.credentials.token
-    
+
     request = Typhoeus::Request.new(
-     "https://www.google.com/m8/feeds/contacts/default/full?max-results=4000",
+      "https://www.google.com/m8/feeds/contacts/default/full?max-results=4000",
       headers: { Authorization: "Bearer #{access_token}" }
     )
 
-    
+
     response = request.run
-    
+
     json = Hash.from_xml(response.body).to_json
     friends = JSON.parse(json).map { |friend| friend }
-      
+
     raw_friends = friends[0][1]["entry"]
     gmail_friends = raw_friends.select { |item| item["phoneNumber"]!=nil }
-
-    binding.pry
-    #get photo of contact
-    
-    # pic_request = Typhoeus::Request.new(
-    #  "https://www.google.com/m8/feeds/photos/media/default/a224c8b33cf47",
-    #   headers: { Authorization: "Bearer #{access_token}" }
-    # )
-    # response = pic_request.run
-    
-    # json = Hash.from_xml(response.body).to_json
-    # pic = JSON.parse(json).map { |pic| pic }
-    # binding.pry
   end
 
-  def parse_friends(get_friends_auth)
-    #implement code to take contacts from last line (gmail contacts) and save 
+  def create_friends(friends)
+    #implement code to take contacts from last line (gmail contacts) and save
+    friends.each do |contact|
+      @friend = Friend.new
+      @friend.name = contact["title"]
+      @friend.phone_number = contact["phoneNumber"]
+
+      if contact["email"] != nil
+        @friend.email = contact["email"]["address"]
+      else
+        @friend.email = "Not provided"
+      end
+      binding.pry
+
+      @friend.save
+    end
   end
 
 

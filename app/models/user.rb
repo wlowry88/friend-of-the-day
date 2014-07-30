@@ -56,8 +56,11 @@ class User < ActiveRecord::Base
     client = Twilio::REST::Client.new('AC8271516baa7eea011b1b68b65c403a80', '9f02188e2ef08b8e64eed170e946212e')
     client.account.messages.create(
     from: '+19177192242',
+    #our number
     to: '+17814391507',
+    #will be their's
     body: "hello fool"
+    #our message
     )
   end
 

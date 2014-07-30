@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
       "https://www.google.com/m8/feeds/contacts/default/full?max-results=4000",
       headers: { Authorization: "Bearer #{access_token}" }
     )
-
-
     response = request.run
 
     json = Hash.from_xml(response.body).to_json
@@ -60,7 +58,6 @@ class User < ActiveRecord::Base
     body: "Whatup! Your phone number just got updated."
     )
   end
-
 
 
 end

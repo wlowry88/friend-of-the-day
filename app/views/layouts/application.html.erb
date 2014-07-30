@@ -8,16 +8,17 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
-  <p id="notice"><%= notice %></p>
-	<h1>HELLO</h1>
-			<% if current_user %>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+      <% if current_user %>
         Signed in as <strong><%= current_user.name %></strong>!
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
       <% else %>
         <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
       <% end %>
-
-<%= yield %>
+      
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_contacts(auth)
+  def get_friends(auth)
     access_token = auth.credentials.token
     
     request = Typhoeus::Request.new(
@@ -23,11 +23,16 @@ class User < ActiveRecord::Base
     response = request.run
     
     json = Hash.from_xml(response.body).to_json
-    contacts = JSON.parse(json).map { |contact| contact }
+    friends = JSON.parse(json).map { |friend| friend }
       
-    raw_contacts = contacts[0][1]["entry"]
-    gmail_contacts = raw_contacts.select { |item| item["phoneNumber"]!=nil }
+    raw_friends = friends[0][1]["entry"]
+    gmail_friends = raw_friends.select { |item| item["phoneNumber"]!=nil }
   end
+
+  def parse_friends(get_friends_auth)
+    #implement code to take contacts from last line (gmail contacts) and save 
+  end
+
 
 
 end

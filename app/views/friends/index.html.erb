@@ -1,0 +1,9 @@
+<h1>Add Friends You Want To Be Reminded To Keep in Touch With</h1>
+
+<% if logged_in? %>
+
+	<% @user.friends.select(:name, :phone_number).distinct.order(:name).each do |friend| %>
+		<p><%= "#{friend.name} - #{friend.phone_number}" %></p>
+
+	<% end %>			
+<% end %>

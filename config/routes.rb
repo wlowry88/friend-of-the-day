@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :users do 
-    resources :friends
-  end
+  resources :users  
+
+  resources :friends
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

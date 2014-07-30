@@ -5,11 +5,13 @@ class SessionsController < ApplicationController
       @user = User.from_omniauth(@response)
       friends = @user.get_friends(@response)
       @user.create_friends(friends)
+      session[:user_id] = @user.id
+      redirect_to friends_path
     else
       @user = User.from_omniauth(@response)
+      session[:user_id] = @user.id
+      redirect_to root_path
     end
-    session[:user_id] = @user.id
-    redirect_to root_path
 
     # # This is sessions controller for calendar
     # @auth = request.env["omniauth.auth"]

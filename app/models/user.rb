@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
      "https://www.google.com/m8/feeds/contacts/default/full?max-results=4000",
       headers: { Authorization: "Bearer #{access_token}" }
     )
+
+    
     response = request.run
     
     json = Hash.from_xml(response.body).to_json
@@ -27,6 +29,19 @@ class User < ActiveRecord::Base
       
     raw_friends = friends[0][1]["entry"]
     gmail_friends = raw_friends.select { |item| item["phoneNumber"]!=nil }
+
+    binding.pry
+    #get photo of contact
+    
+    # pic_request = Typhoeus::Request.new(
+    #  "https://www.google.com/m8/feeds/photos/media/default/a224c8b33cf47",
+    #   headers: { Authorization: "Bearer #{access_token}" }
+    # )
+    # response = pic_request.run
+    
+    # json = Hash.from_xml(response.body).to_json
+    # pic = JSON.parse(json).map { |pic| pic }
+    # binding.pry
   end
 
   def parse_friends(get_friends_auth)

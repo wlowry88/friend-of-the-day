@@ -9,13 +9,23 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    respond_to do |format|
+    original_number = @user.phone_number
+    new_number = user_params[:phone_number]
+    if new_number != original_number
       if @user.update(user_params)
-        format.html { redirect_to root_path, notice: 'Your phone number was updated successfully.' }
+        @user.send_updated_message
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: 'Your phone number was updated successfully.' }
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    else
+      respond_to do |format|
+          format.html { redirect_to root_path, notice: 'That number is already on record :)' }
+        format.json { render :show, status: :ok, location: @user }
       end
     end
   end

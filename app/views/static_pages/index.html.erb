@@ -6,14 +6,13 @@
       <p>Phone number: <%= random_friend.phone_number%></p>
       <p>Email: <%= random_friend.email%></p>
     <% end %> 
-  <% end %>
-  <h2>To get reminders via text enter you phone number here </h2>
+  <h2>To get reminders via text enter your phone number here </h2>
 
 
-  <%= form_for(@user) do |f| %>
+  <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@act.errors.count, "error") %> prohibited this act from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this act from being saved:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
@@ -27,9 +26,10 @@
   
     <p>
       <%= f.label :phone_number %><br>
-      <%= f.text_field :phone_number %>
+      <%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
       <%= f.submit %>
     </p>
   </div>  
 <% end %>
 
+  <% end %>

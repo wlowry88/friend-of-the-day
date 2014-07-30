@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     friends = JSON.parse(json).map { |friend| friend }
 
     raw_friends = friends[0][1]["entry"]
-    gmail_friends = raw_friends.select { |item| item["phoneNumber"]!=nil }
+    gmail_friends = raw_friends.select { |item| item["phoneNumber"]!=nil && item["phoneNumber"].kind_of?(String) }
   end
 
   def create_friends(friends)
@@ -39,12 +39,15 @@ class User < ActiveRecord::Base
       @friend.phone_number = contact["phoneNumber"]
 
       if contact["email"] != nil
-        @friend.email = contact["email"]["address"]
+        if contact["email"].kind_of?(Array)
+          @friend.email = contact["email"][0]["address"]
+        else
+          @friend.email = contact["email"]["address"]
+        end
       else
         @friend.email = "Not provided"
       end
-      binding.pry
-
+      @friend.user_id = self.id  
       @friend.save
     end
   end

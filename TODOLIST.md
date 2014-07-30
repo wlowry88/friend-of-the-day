@@ -9,3 +9,7 @@
 4. Needs to pull in friends' birthdays
 
 5. Needs to send a FB message, wall post or email on user's behalf -->
+
+
+<!-- web instruction to export Facebook birthdays to google calendar 
+http://stevestruemph.com/2013/01/sync-facebook-events-with-google-calendar/-->

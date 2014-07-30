@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
     @user.create_friends(friends)
     session[:user_id] = @user.id
     redirect_to root_path
+
+    # This is sessions controller for calendar
     @auth = request.env["omniauth.auth"]
     #Use the token from the data to request a list of calendars
     @token = @auth["credentials"]["token"]
@@ -30,3 +32,5 @@ class SessionsController < ApplicationController
   ##:parameters => {}, 
   ## get the calendar id
 end
+
+

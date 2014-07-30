@@ -27,6 +27,9 @@ gem 'spring',        group: :development
 
 #ALL OUR GOOGLE SHIT
 gem "omniauth-google-oauth2"
+gem 'google-api-client', :require => 'google/api_client'
+gem 'typhoeus'
+gem 'area'
 # Use unicorn as the app server
 # gem 'unicorn'
 

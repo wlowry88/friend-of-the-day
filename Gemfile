@@ -25,19 +25,14 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#ALL OUR GOOGLE SHIT
+#google
 gem "omniauth-google-oauth2"
 gem 'google-api-client', :require => 'google/api_client'
 gem 'typhoeus'
 gem 'area'
-# Use unicorn as the app server
-# gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+#twilio
+gem 'twilio-ruby'
 
 group :test, :development do
   gem "rspec-rails"

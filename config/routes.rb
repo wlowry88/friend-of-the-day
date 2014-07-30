@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
+
+  post 'twilio/voice' => 'twilio#voice'
   
   root "static_pages#index"
 

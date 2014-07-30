@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       
     raw_contacts = contacts[0][1]["entry"]
     gmail_contacts = raw_contacts.select { |item| item["phoneNumber"]!=nil }
-    binding.pry
   end
+
 
 end

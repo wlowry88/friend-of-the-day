@@ -11,10 +11,11 @@ class SessionsController < ApplicationController
     client.authorization.access_token = @token
     service = client.discovered_api('calendar', 'v3')
     @result = client.execute(
-      :api_method => service.calendar_list.list,
-      :parameters => {},
+      :api_method => service.events.list,
+    # we need to figure out how to get the birthday calendar id for all users"
+      :parameters => {'calendarId' => '8bedhb3o4g5l2dtkil2k34tjm2dgum9k@import.calendar.google.com'},
       :headers => {'Content-Type' => 'application/json'})
-    # binding.pry
+    binding.pry
   end
 
   def destroy

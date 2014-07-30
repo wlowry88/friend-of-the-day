@@ -1,15 +1,14 @@
 class SessionsController < ApplicationController
   def create
     @response = env["omniauth.auth"]
-    if User.where(@response.slice(:provider, :uid))
-      @user = User.from_omniauth(@response)
-      session[:user_id] = @user.id
-    else
+    if User.where(@response.slice(:provider, :uid)).empty?
       @user = User.from_omniauth(@response)
       friends = @user.get_friends(@response)
       @user.create_friends(friends)
-      session[:user_id] = @user.id
+    else
+      @user = User.from_omniauth(@response)
     end
+    session[:user_id] = @user.id
     redirect_to root_path
 
     # # This is sessions controller for calendar
@@ -24,7 +23,7 @@ class SessionsController < ApplicationController
     # # we need to figure out how to get the birthday calendar id for all users"
     #   :parameters => {'calendarId' => '8bedhb3o4g5l2dtkil2k34tjm2dgum9k@import.calendar.google.com'},
     #   :headers => {'Content-Type' => 'application/json'})
-    
+
   end
 
   def destroy
@@ -34,8 +33,6 @@ class SessionsController < ApplicationController
 
   ##This is how you get a calendar Id for and search for friend's birthdays
   ##:api_method => service.calendar_list.list,
-  ##:parameters => {}, 
+  ##:parameters => {},
   ## get the calendar id
 end
-
-

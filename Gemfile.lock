@@ -85,6 +85,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.5)
     google-analytics-rails (0.0.6)
     google-api-client (0.7.1)
@@ -294,6 +297,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
+  figaro
   google-analytics-rails
   google-api-client
   guard-rspec

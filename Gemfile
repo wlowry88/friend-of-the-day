@@ -32,7 +32,8 @@ gem 'google-api-client', :require => 'google/api_client'
 gem 'typhoeus'
 gem 'area'
 
-
+#figaro
+gem 'figaro'
 #twilio
 gem 'twilio-ruby'
 

@@ -2,8 +2,15 @@
 
 <% if logged_in? %>
 
-	<% @user.friends.select(:name, :phone_number).distinct.order(:name).each do |friend| %>
-		<p><%= "#{friend.name} - #{friend.phone_number}" %></p>
+	<% @user.friends.select(:id, :name, :phone_number).distinct.order(:name).each do |friend| %>
+		<p><%= friend.name %>
+
+		<%= form_for friend do |f| %>
+		<%= f.hidden_field :is_close?, :value=> true %>
+		<%= f.submit "Add to close friends" %>
+		<% end %>
+		</p>
+
 
 	<% end %>			
 <% end %>

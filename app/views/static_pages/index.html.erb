@@ -9,7 +9,11 @@
       <% if random_friend.email != "Not provided" %>
         <p>Email: <%= mail_to "#{random_friend.email}" %></p>
       <% end %>
-      <h2>To get reminders via text enter your phone number here </h2>
+      <% if @user.phone_number.nil? %>
+        <h2>Enter your phone number here to get text reminders!! :) </h2>
+      <% else %>
+        <h4>You can update your number here if you need to: </h4> 
+      <% end %>
     <% end %>
 
       <%= form_for @user do |f| %>

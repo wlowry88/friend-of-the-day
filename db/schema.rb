@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730232224) do
+ActiveRecord::Schema.define(version: 20140731042911) do
 
   create_table "friends", force: true do |t|
     t.string   "name"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20140730232224) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "phone_number"
+    t.string   "profile_photo"
+    t.string   "cover_photo"
   end
 
 end

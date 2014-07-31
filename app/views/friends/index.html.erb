@@ -1,3 +1,6 @@
+<h1><%= "People You're Keeping in Touch With:" if @user.friends.where(close_friend: true).size >= 1 %><h1>
+
+
 <h1>Add Friends You Want To Be Reminded To Keep in Touch With</h1>
 
 <% if logged_in? %>

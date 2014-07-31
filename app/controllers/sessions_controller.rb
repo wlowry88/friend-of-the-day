@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
       @user = User.from_omniauth(@response)
       friends = @user.get_friends(@response)
       @user.create_friends(friends)
+      @user.get_plus_info(@response)
+      @user.remove_duplicates
       session[:user_id] = @user.id
       redirect_to friends_path
     else

@@ -2,10 +2,17 @@ class FriendsController < ApplicationController
 
 	def create
 		#will use the fbook api to find or create friends
+		@friend = Friend.new(friend_params)
+		if @friend.save
+			redirect_to friends_path
+		else
+			redirect_to root_path
+		end
 	end
 
 	def index
 		@user = current_user
+		@friend = Friend.new
 	end
 
 	def edit
@@ -23,7 +30,7 @@ class FriendsController < ApplicationController
 	private
 
 	def friend_params
-		params.require(:friend).permit(:name, :email, :birthday, :phone_number, :close_friend)
+		params.require(:friend).permit(:name, :email, :birthday, :phone_number, :close_friend, :user_id)
 	end
 
 end

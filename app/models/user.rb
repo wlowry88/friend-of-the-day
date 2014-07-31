@@ -79,4 +79,37 @@ class User < ActiveRecord::Base
     self.friends.where.not(id: ids).destroy_all
   end
 
+  def close_friends
+    self.friends.where(close_friend: true)
+  end
+
+  def friends_not_contacted
+    if close_friends.where(contacted: false).count == 0
+      reset_contacted 
+    end
+    close_friends.where(contacted: false)
+  end
+
+  def friend_of_the_day
+    @@friend_of_the_day = friends_not_contacted.sample  
+  end
+
+  def change_friend_of_the_day
+    Friend.find(@@friend_of_the_day.id).update_attributes(contacted: true)
+  end
+
+  def reset_contacted
+    close_friends.update_all(contacted: false)
+  end
+
+  def send_reminder
+    # binding.pry
+    client = Twilio::REST::Client.new('AC8271516baa7eea011b1b68b65c403a80', '9f02188e2ef08b8e64eed170e946212e')
+    client.account.messages.create(
+    from: '+19177192242',
+    to: self.phone_number,
+    body: "Hey! Have you reached out to #{@@friend_of_the_day.name} lately? Here is their number: #{@@friend_of_the_day.phone_number}."
+    )
+  end
+
 end

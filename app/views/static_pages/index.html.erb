@@ -1,13 +1,11 @@
 <h1>Mnemonic</h1>
-  <% if logged_in? %>
-    <% 5.times do %>
-      <% random_friend = @friends.sample %>
+  <% if logged_in? %>  
+      <% random_friend = @user.friend_of_the_day %>
       <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
       <p>Phone number: <%= random_friend.phone_number%></p>
       <% if random_friend.email != "Not provided" %>
       <p>Email: <%= mail_to "#{random_friend.email}" %></p>
       <% end %>
-    <% end %> 
   <h2>To get reminders via text enter your phone number here </h2>
 
 
@@ -27,8 +25,8 @@
   <div class="actions">
   
     <p>
-      <%= f.label :phone_number %><br>
-      <%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
+        <%= f.label :phone_number %><br>
+        <%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
       <%= f.submit %>
     </p>
   </div>  

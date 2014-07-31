@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731042911) do
+ActiveRecord::Schema.define(version: 20140731162756) do
 
   create_table "friends", force: true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140731042911) do
     t.string   "phone_number"
     t.string   "email"
     t.boolean  "close_friend", default: false
+    t.boolean  "contacted",    default: false
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"

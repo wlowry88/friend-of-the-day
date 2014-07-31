@@ -59,5 +59,9 @@ class User < ActiveRecord::Base
     )
   end
 
+  def remove_duplicates
+    ids = self.friends.select("MIN(id) as id").group(:name, :phone_number).collect(&:id)
+    self.friends.where.not(id: ids).destroy_all
+  end
 
 end

@@ -11,6 +11,7 @@ class FriendsController < ApplicationController
 	def update
 		@friend = Friend.find(params[:id])
 		@friend.update(friend_params)
+		binding.pry
 		redirect_to friends_path
 	end
 

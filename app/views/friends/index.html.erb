@@ -3,6 +3,7 @@
 <% if logged_in? %>
 
 	<%= button_to "Back", :back %>
+	<%= button_to "Close Friends!", "#" %>
 	<% @user.friends.select(:id, :name, :phone_number).distinct.order(:name).each do |friend| %>
 		<p>
 		<%= friend.name %>

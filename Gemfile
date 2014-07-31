@@ -35,6 +35,9 @@ gem 'area'
 #twilio
 gem 'twilio-ruby'
 
+#whenever
+gem 'whenever', '~> 0.9.2'
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"

@@ -90,12 +90,17 @@ class User < ActiveRecord::Base
     close_friends.where(contacted: false)
   end
 
-  def friend_of_the_day
-    @@friend_of_the_day = friends_not_contacted.sample  
+  def set_friend_of_the_day
+    friend = friends_not_contacted.sample  
+    Friend.find(friend.id).update_attributes(fotd: true)
+  end
+
+  def get_friend_of_the_day
+    Friend.find_by(fotd: true)
   end
 
   def change_friend_of_the_day
-    Friend.find(@@friend_of_the_day.id).update_attributes(contacted: true)
+    Friend.find(self.get_friend_of_the_day.id).update_attributes(contacted: true)
   end
 
   def reset_contacted
@@ -108,7 +113,7 @@ class User < ActiveRecord::Base
     client.account.messages.create(
     from: '+19177192242',
     to: self.phone_number,
-    body: "Hey! Have you reached out to #{@@friend_of_the_day.name} lately? Here is their number: #{@@friend_of_the_day.phone_number}."
+    body: "Hey! Have you reached out to #{self.get_friend_of_the_day.name} lately? Here is their number: #{self.get_friend_of_the_day.phone_number}."
     )
   end
 

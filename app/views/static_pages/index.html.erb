@@ -1,35 +1,36 @@
 <h1>Mnemonic</h1>
   <% if logged_in? %>  
-      <% random_friend = @user.friend_of_the_day %>
+    <% if current_user.get_friend_of_the_day %>
+        <% random_friend = @friend_of_the_day %>
+    
+        <p>Add some close friends to stay in touch with <%= link_to 'Here', friends_path %></p>
       <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
-      <p>Phone number: <%= random_friend.phone_number%></p>
+        <p>Phone number: <%= random_friend.phone_number%></p>
       <% if random_friend.email != "Not provided" %>
-      <p>Email: <%= mail_to "#{random_friend.email}" %></p>
+        <p>Email: <%= mail_to "#{random_friend.email}" %></p>
       <% end %>
-  <h2>To get reminders via text enter your phone number here </h2>
+      <h2>To get reminders via text enter your phone number here </h2>
+    <% end %>
 
-
-  <%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this act from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this act from being saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+        <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-  
-    <p>
+        <div class="actions">
+        <p>
         <%= f.label :phone_number %><br>
         <%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
-      <%= f.submit %>
-    </p>
-  </div>  
-<% end %>
+        <%= f.submit %>
+        </p>
+        </div>  
+    <% end %>
 
   <% end %>

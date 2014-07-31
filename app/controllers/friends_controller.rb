@@ -15,6 +15,7 @@ class FriendsController < ApplicationController
 	def update
 		@friend = Friend.find(params[:id])
 		@friend.update(friend_params)
+		current_user.set_friend_of_the_day
 		redirect_to friends_path
 	end
 

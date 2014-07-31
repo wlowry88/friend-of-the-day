@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
 
   def change_friend_of_the_day
-    get_friend_of_the_day.update_attributes(fotd: false)
+    get_friend_of_the_day.update_attributes(fotd: false, contacted: true)
     set_friend_of_the_day
   end
 

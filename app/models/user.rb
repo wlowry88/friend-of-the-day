@@ -92,16 +92,16 @@ class User < ActiveRecord::Base
 
   def set_friend_of_the_day
     friend = friends_not_contacted.sample  
-    get_friend_of_the_day.update_attributes(fotd: false)
     Friend.find(friend.id).update_attributes(fotd: true)
   end
 
   def get_friend_of_the_day
-    Friend.find_by(fotd: true)
+    self.friends.find_by(fotd: true)
   end
 
   def change_friend_of_the_day
-    Friend.find(self.get_friend_of_the_day.id).update_attributes(contacted: true)
+    get_friend_of_the_day.update_attributes(fotd: false)
+    set_friend_of_the_day
   end
 
   def reset_contacted

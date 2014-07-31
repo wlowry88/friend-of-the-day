@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140730232224) do
     t.datetime "updated_at"
     t.string   "phone_number"
     t.string   "email"
-    t.boolean  "close_friend?", default: false
+    t.boolean  "close_friend", default: false
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"

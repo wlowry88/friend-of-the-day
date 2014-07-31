@@ -8,4 +8,17 @@ class FriendsController < ApplicationController
 		@user = current_user
 	end
 
+	def update
+		@friend = Friend.find(params[:id])
+		@friend.update(friend_params)
+		redirect_to friends_path
+	end
+
+
+	private
+
+	def friend_params
+		params.require(:friend).permit(:name, :email, :birthday, :phone_number, :close_friend)
+	end
+
 end

@@ -2,15 +2,17 @@
 
 <% if logged_in? %>
 
+	<%= button_to "Back", :back %>
 	<% @user.friends.select(:id, :name, :phone_number).distinct.order(:name).each do |friend| %>
-		<p><%= friend.name %>
+		<p>
+		<%= friend.name %>
 
 		<%= form_for friend do |f| %>
-		<%= f.hidden_field :is_close?, :value=> true %>
+		<%= f.hidden_field :close_friend, :value=> true %>
 		<%= f.submit "Add to close friends" %>
 		<% end %>
-		</p>
 
+		</p>
 
 	<% end %>			
 <% end %>

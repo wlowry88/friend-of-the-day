@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
         @friend.email = "Not provided"
       end
       @friend.user_id = self.id  
-      @friend.save
+      @friend.save unless (/^[\\p{L} .'-]+$|\d|#/.match(@friend.name))
     end
   end
 

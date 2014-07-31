@@ -1,0 +1,27 @@
+
+	<% if @user.friends.where(close_friend: true).size > 0 %>
+		<h1><%= "People You're Keeping in Touch With:" %></h1>
+			  <% @user.friends.select(:id, :name).where(close_friend: true).each do |friend| %>
+			  	<p><%= friend.name %></p>
+			  <% end %>
+	<% end %>
+
+<h1>Add Friends You Want To Be Reminded To Keep in Touch With</h1>
+
+<% if logged_in? %>
+
+	<%= button_to "Back", :back %>
+	<%= button_to "Close Friends!", "#" %>
+	<% @user.friends.where(close_friend: false).order(:name).each do |friend| %>
+		<p>
+		<%= friend.name %>
+
+		<%= form_for friend do |f| %>
+		<%= f.hidden_field :close_friend, :value=> true %>
+		<%= f.submit "Add to close friends" %>
+		<% end %>
+
+		</p>
+
+	<% end %>			
+<% end %>

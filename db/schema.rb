@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730192426) do
+ActiveRecord::Schema.define(version: 20140731042911) do
 
   create_table "friends", force: true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140730192426) do
     t.datetime "updated_at"
     t.string   "phone_number"
     t.string   "email"
+    t.boolean  "close_friend", default: false
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"
@@ -35,6 +36,8 @@ ActiveRecord::Schema.define(version: 20140730192426) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "phone_number"
+    t.string   "profile_photo"
+    t.string   "cover_photo"
   end
 
 end

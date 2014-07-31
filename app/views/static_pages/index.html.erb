@@ -2,9 +2,11 @@
   <% if logged_in? %>
     <% 5.times do %>
       <% random_friend = @friends.sample %>
-      <h3>Have you reached out to <%= random_friend.name %> ?</h3>
+      <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
       <p>Phone number: <%= random_friend.phone_number%></p>
-      <p>Email: <%= random_friend.email%></p>
+      <% if random_friend.email != "Not provided" %>
+      <p>Email: <%= mail_to "#{random_friend.email}" %></p>
+      <% end %>
     <% end %> 
   <h2>To get reminders via text enter your phone number here </h2>
 

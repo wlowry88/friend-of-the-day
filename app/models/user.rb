@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      #user.picture = auth["info"]["image"]
+
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
@@ -20,8 +22,6 @@ class User < ActiveRecord::Base
       "https://www.google.com/m8/feeds/contacts/default/full?max-results=4000",
       headers: { Authorization: "Bearer #{access_token}" }
     )
-
-
     response = request.run
 
     json = Hash.from_xml(response.body).to_json
@@ -52,6 +52,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_plus_info(auth)
+    access_token = auth.credentials.token
+    request = Typhoeus::Request.new(
+      "https://www.googleapis.com/plus/v1/people/#{auth["uid"]}",
+      headers: { Authorization: "Bearer #{access_token}" }
+    )
+    response = request.run
+    parsed_json = JSON.parse(response.options[:response_body])
+    self.cover_photo = parsed_json["cover"]["coverPhoto"]["url"]
+    self.profile_photo = auth["info"]["image"]
+    self.save
+  end
+
   def send_updated_message
     client = Twilio::REST::Client.new('AC8271516baa7eea011b1b68b65c403a80', '9f02188e2ef08b8e64eed170e946212e')
     client.account.messages.create(
@@ -61,6 +74,9 @@ class User < ActiveRecord::Base
     )
   end
 
-
+  def remove_duplicates
+    ids = self.friends.select("MIN(id) as id").group(:name, :phone_number).collect(&:id)
+    self.friends.where.not(id: ids).destroy_all
+  end
 
 end

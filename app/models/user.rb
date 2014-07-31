@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   end
 
   def close_friends
-    self.friends.where(close_friend: true)
+      self.friends.where(close_friend: true)
   end
 
   def friends_not_contacted
@@ -91,8 +91,8 @@ class User < ActiveRecord::Base
   end
 
   def set_friend_of_the_day
-    friend = friends_not_contacted.sample  
-    Friend.find(friend.id).update_attributes(fotd: true)
+      friend = friends_not_contacted.sample  
+      Friend.find(friend.id).update_attributes(fotd: true)
   end
 
   def get_friend_of_the_day

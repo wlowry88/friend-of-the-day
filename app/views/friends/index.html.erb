@@ -29,6 +29,8 @@
 		<%= form_for friend do |f| %>
 		<%= f.hidden_field :close_friend, :value=> true %>
 		<%= f.submit "Add to close friends" %>
+		<%= link_to 'Edit', edit_friend_path(friend) %>
+
 		<% end %>
 		</p>
 	<% end %>			

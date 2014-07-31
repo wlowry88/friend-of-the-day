@@ -1,0 +1,20 @@
+<% if logged_in? %>
+
+    <%= button_to "Back", :back %>
+
+        <h3><%= @friend.name %></h3>
+  
+    <%= form_for @friend do |f| %>
+        <p>
+        <%= f.label :phone_number %>
+        <%= f.telephone_field :phone_number, placeholder: "+12128888888" %></br>
+        </p>
+        <p>
+        <%= f.label :email %>
+        <%= f.text_field :email %><br>
+        </p>
+        <p>
+        <%= f.submit "Update #{@friend.name}" %>
+        </p>
+    <% end %>           
+<% end %>

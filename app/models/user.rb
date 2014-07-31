@@ -79,4 +79,25 @@ class User < ActiveRecord::Base
     self.friends.where.not(id: ids).destroy_all
   end
 
+  def close_friends
+    self.friends.where(close_friend: true)
+  end
+
+  def friends_not_contacted
+    if close_friends.where(contacted: false).count == 0
+      reset_contacted 
+    end
+    close_friends.where(contacted: false)
+  end
+
+  def friend_of_the_day
+    daily_friend = friends_not_contacted.sample
+    Friend.find(daily_friend.id).update_attributes(contacted: true)
+    daily_friend
+  end
+
+  def reset_contacted
+    close_friends.update_all(contacted: false)
+  end
+
 end

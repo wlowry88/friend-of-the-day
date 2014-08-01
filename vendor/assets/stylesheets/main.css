@@ -105,7 +105,6 @@ background-color: transparent;
     letter-spacing: 0.1em;
     line-height: 1em;
    text-transform: uppercase;
-   color: black;
 }
 
 #page-welcome header p{
@@ -116,7 +115,6 @@ background-color: transparent;
      letter-spacing: 0.1em;
     line-height: 3em;
     text-transform: uppercase;
-    color: black;
 }
 
 
@@ -275,7 +273,7 @@ background-color: transparent;
     border-radius: 10px;
     background: #000;
     background: rgba(0,0,0,0.7);
-    background: url(../../images/slider/02.jpg) no-repeat center center;
+    background: url(../img/loading.gif) no-repeat center center;
     height: 32px;
     left: 20px;
     position: fixed;
@@ -392,7 +390,7 @@ background-color: transparent;
 
 .btn.btn-default{
     margin: 40px auto 0;
-    background:magenta;
+    background:transparent;
     position: relative;
     color: #fff;
     font-size: 1em;
@@ -410,7 +408,6 @@ background-color: transparent;
     -moz-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-    color: white;
 }
 
 .btn.btn-default:hover,
@@ -418,7 +415,6 @@ background-color: transparent;
     background:#fff;
     border-color: #fff;
     color:fff;
-    color:black;
 }
 
 input,.input-lg,button{

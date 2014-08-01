@@ -3,7 +3,11 @@ $(function(){
   $("#normal_friends_list").hide();
   $(".edit_number_form").hide();
 
-  $(".edit-friend-button").on("click", function(e){
+  $(".close_friends_list").on("click", ".edit-friend-button", function(e){
+    e.preventDefault();
+    $(this).parent().find(".edit_friend_form").first().css("visibility", "visible").slideToggle();
+  });
+  $("#normal_friends_list").on("click", ".edit-friend-button", function(e){
     e.preventDefault();
     $(this).parent().find(".edit_friend_form").first().css("visibility", "visible").slideToggle();
   });

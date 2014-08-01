@@ -1,8 +1,10 @@
 if($("#close_friend_<%= @friend.id %>").find("form").find("input[type=submit]").val()=="Remove from Close Friends") {
 	$("#close_friend_<%= @friend.id %>").remove();
 	$("#normal_friends_list").append("<%=j render 'append_close_friend' %>");
+	$(".edit_friend_form").hide();
 
 } else if($("#normal_friend_<%= @friend.id %>").find("form").find("input[type=submit]").val()=="Add to close friends") {
 	$("#normal_friend_<%= @friend.id %>").remove();
 	$(".close_friends_list").append("<%=j render 'append_close_friend' %>");
+	$(".edit_friend_form").hide();
 }

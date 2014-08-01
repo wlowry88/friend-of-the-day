@@ -15,10 +15,6 @@ class FriendsController < ApplicationController
 		@friend = Friend.new
 	end
 
-	def edit
-		@friend = Friend.find(params[:id])
-	end
-
 	def update
 		@friend = Friend.find(params[:id])
 		@friend.update(friend_params)

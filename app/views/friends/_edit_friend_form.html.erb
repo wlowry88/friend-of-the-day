@@ -1,5 +1,5 @@
 <p>
-	<%= form_for(friend) do |f| %>
+	<%= form_for friend, remote: true do |f| %>
 		<%= f.label :name %>
 		<%= f.text_field :name %><br>
 		<%= f.label :phone_number %>

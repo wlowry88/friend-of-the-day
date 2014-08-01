@@ -1,5 +1,5 @@
 <% @user.friends.where(close_friend: false).order(:name).each do |friend| %>
-	<div id="normal_friend_<%= friend.id %>", class="friend">
+	<div id="normal_friend_<%= friend.id %>", class="normal_friend">
 	<h5><%= friend.name %></h5>
 		<!--Form for Adding to Close Friends -->
 			<%= form_for friend, remote: true do |f| %>
@@ -12,3 +12,4 @@
 		</div>  
 	</div>
 <% end %>			
+

@@ -4,7 +4,7 @@
     <div class="friend_of_the_day"> <!---Friend of the Day -->
   	<% random_friend = @friend_of_the_day %>
     
-      <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
+      <h1>Have you reached out to <%= random_friend.name %> lately?</h1>
         <p>Phone number: <%= random_friend.phone_number%></p>
       <% if random_friend.email != "Not provided" %>
         <p>Email: <%= mail_to "#{random_friend.email}" %></p>
@@ -24,7 +24,7 @@
 
 <!-- 	<div class="full_width"> -->
 	<div class="full_width">
-	<button class="btn btn-primary btn-weird" id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
+	<button class="btn btn-primary btn-weird btn-lg" id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
 	</div>
 <!-- 	</div> -->
 <% if logged_in? %>

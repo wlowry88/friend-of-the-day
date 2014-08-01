@@ -1,12 +1,12 @@
 <p>
 	<%= form_for(friend) do |f| %>
 		<%= f.label :name %>
-		<%= f.text_field :name %>
+		<%= f.text_field :name %><br>
 		<%= f.label :phone_number %>
-		<%= f.phone_field :phone_number %>
+		<%= f.phone_field :phone_number %><br>
 		<%= f.label :email %>
-		<%= f.text_field :email %>
+		<%= f.text_field :email %><br>
 		<%= f.hidden_field :user_id, :value => current_user.id %>	
-		<%= f.submit "Edit Friend" %>
+		<%= f.submit "Edit Friend"%>
 	<% end %>
 </p>

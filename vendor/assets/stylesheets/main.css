@@ -565,8 +565,16 @@ label.valid{
     margin-right: auto;
     float: none;
 }
+/* ==========================================================================
+   Friends Page
+   ========================================================================== */
 
-
+.friend_page{
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: hidden;
+}
 
 /* ==========================================================================
    Responsive Settings
@@ -577,6 +585,7 @@ label.valid{
 
   #page-profile .profile{
     margin:0 auto 20px auto;
+
   }
 
 

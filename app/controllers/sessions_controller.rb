@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     else
       @user = User.from_omniauth(@response)
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to friends_path
     end
 
     # # This is sessions controller for calendar

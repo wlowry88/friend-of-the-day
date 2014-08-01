@@ -1,12 +1,11 @@
 class FriendsController < ApplicationController
 
 	def create
-		#will use the fbook api to find or create friends
 		@friend = Friend.new(friend_params)
 		if @friend.save
 			redirect_to friends_path
 		else
-			redirect_to root_path
+			redirect_to friends_path
 		end
 	end
 

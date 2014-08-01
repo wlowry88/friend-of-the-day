@@ -1,7 +1,7 @@
 <% if current_user.get_friend_of_the_day %>
 
-      <!---Friend of the Day -->
-      <% random_friend = @friend_of_the_day %>
+    <div class="friend_of_the_day" <!---Friend of the Day -->
+    <% random_friend = @friend_of_the_day %>
     
       <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
         <p>Phone number: <%= random_friend.phone_number%></p>
@@ -36,8 +36,9 @@
         </p>
         </div>  
     <% end %>
+  </div>
 <% if @user.friends.where(close_friend: true).size > 0 %>
-	<div class="close_friends_list">
+	<div class="close_friends_list full_width">
 		<%= render "close_friends_list" %>
 	</div>
 <% end %>
@@ -45,7 +46,9 @@
 <br>
 
 <!-- 	<div class="full_width"> -->
+	<div class="full_width">
 	<button id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
+	</div>
 <!-- 	</div> -->
 	<% if logged_in? %>
 		
@@ -57,3 +60,5 @@
 			<%= render "friends" %>
 		</div>
 	<% end %>
+
+

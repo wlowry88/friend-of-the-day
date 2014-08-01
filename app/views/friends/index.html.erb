@@ -1,3 +1,41 @@
+<% if current_user.get_friend_of_the_day %>
+
+      <!---Friend of the Day -->
+      <% random_friend = @friend_of_the_day %>
+    
+      <h3>Have you reached out to <%= random_friend.name %> lately?</h3>
+        <p>Phone number: <%= random_friend.phone_number%></p>
+      <% if random_friend.email != "Not provided" %>
+        <p>Email: <%= mail_to "#{random_friend.email}" %></p>
+      <% end %>
+<% end %>
+<% if @user.phone_number.nil? %>
+      <!-- END FRIENDS -->
+
+      <h2>Enter your phone number here to get text reminders!! :) </h2>
+      <% else %>
+      <h4>You can update your number here if you need to: </h4> 
+      <% end %>
+       <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this act from being saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+        <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="actions">
+        <p>
+        <%= f.label :phone_number %><br>
+        <%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
+        <%= f.submit %>
+        </p>
+        </div>  
+    <% end %>
 <% if @user.friends.where(close_friend: true).size > 0 %>
 	<div class="close_friends_list">
 		<%= render "close_friends_list" %>
@@ -7,15 +45,15 @@
 <br>
 
 <!-- 	<div class="full_width"> -->
-		<h1>Add Friends You Want To Be Reminded To Keep in Touch With</h1>
+	<button id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
 <!-- 	</div> -->
 	<% if logged_in? %>
+		
+		<div id="normal_friends_list">
 		<div id="new_friend_form">
 			<h3>Or, Add A new Friend</h3>
 			<%= render "new_friend_form" %>
 		</div>
-		
-		<div id="normal_friends_list">
 			<%= render "friends" %>
 		</div>
 	<% end %>

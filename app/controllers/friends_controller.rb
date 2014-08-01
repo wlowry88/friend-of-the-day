@@ -11,6 +11,7 @@ class FriendsController < ApplicationController
 	end
 
 	def index
+		@friend_of_the_day = current_user.get_friend_of_the_day if logged_in?
 		@user = current_user
 		@friend = Friend.new
 	end

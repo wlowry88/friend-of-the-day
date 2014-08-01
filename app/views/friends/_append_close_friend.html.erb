@@ -1,5 +1,5 @@
 <div id="close_friend_<%= @friend.id %>", class="close_friend col-md-4">
-	<h5><%= @friend.name %></h5>
+	<h4><%= @friend.name %></h4>
 		<!--Form for Adding to Close Friends -->
 	<%= form_for @friend, remote: true do |f| %>
 		<%= f.hidden_field :close_friend, :value=> false %>

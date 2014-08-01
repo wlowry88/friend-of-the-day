@@ -20,6 +20,7 @@ img {
 
 a:link,a:visited {
     outline: 0;
+    color: red;
 }
 
 a:hover,a:active {
@@ -570,7 +571,7 @@ label.valid{
    ========================================================================== */
 
 .friend_page{
-  background-color: white;
+  background-color: rgba(255,255,255,0.7);
   margin: 0 auto;
   padding: 20px;
   overflow: hidden;

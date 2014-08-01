@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.send_updated_message
         respond_to do |format|
-          format.html { redirect_to root_path, notice: 'Your phone number was updated successfully.' }
+          format.html { redirect_to friends_path, notice: 'Your phone number was updated successfully.' }
           format.json { render :show, status: :ok, location: @user }
         end
       else
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-          format.html { redirect_to root_path, notice: 'That number is already on record :)' }
+          format.html { redirect_to friends_path, notice: 'That number is already on record :)' }
         format.json { render :show, status: :ok, location: @user }
       end
     end

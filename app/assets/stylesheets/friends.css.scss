@@ -12,6 +12,7 @@
 .full_width {
 	 display: block;
 	 overflow: hidden;
+   color: black;
 }
 
 #normal_friends_list {
@@ -26,3 +27,15 @@
 	background-color: gray;
 	color: white;
 }
+
+.friend_of_the_day {
+   
+   visibility: hidden;
+   color: black;
+}
+
+#normal_friends_list {
+   
+   color: black;
+}
+

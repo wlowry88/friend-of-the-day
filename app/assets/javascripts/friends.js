@@ -2,6 +2,7 @@ $(function(){
   $(".edit_friend_form").hide();
   $("#normal_friends_list").hide();
   $(".edit_number_form").hide();
+  $(".friend_of_the_day").hide();
 
   $(".close_friends_list").on("click", ".edit-friend-button", function(e){
     e.preventDefault();
@@ -21,4 +22,6 @@ $(function(){
   	e.preventDefault;
   	$("#normal_friends_list").css("visibility", "visible").slideToggle();
   });
+
+  $(".friend_of_the_day").css("visibility", "visible").fadeIn(1500);
 });

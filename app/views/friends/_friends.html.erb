@@ -1,5 +1,5 @@
 <% @user.friends.where(close_friend: false).order(:name).each do |friend| %>
-	<div id="friend_<%= friend.id %>">
+	<div id="<%= friend.id %>">
 	<h5><%= friend.name %></h5>
 		<!--Form for Adding to Close Friends -->
 		<div id="close_friend_button_<%=friend.id%>">

@@ -16,13 +16,13 @@ class FriendsController < ApplicationController
 	end
 
 	def update
+		@user = current_user
 		@friend = Friend.find(params[:id])
 		@friend.update(friend_params)
 		begin
 			current_user.set_friend_of_the_day if (current_user.get_friend_of_the_day == nil)
 		rescue
 		end
-		redirect_to friends_path
 	end
 
 	def destroy

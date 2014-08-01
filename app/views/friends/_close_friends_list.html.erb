@@ -1,0 +1,15 @@
+	<h1><%= "People You're Keeping in Touch With:" %></h1>
+	<% @user.friends.select(:id, :name).where(close_friend: true).each do |friend| %>
+		<div id="close_friend_<%= friend.id %>", class="friend">
+		<h5><%= friend.name %></h5>
+			<!--Form for Adding to Close Friends -->
+				<%= form_for friend, remote: true do |f| %>
+					<%= f.hidden_field :close_friend, :value=> false %>
+					<%= f.submit "Remove from Close Friends" %>
+				<% end %>
+				<%= link_to "Edit Friend", "", class: "edit-friend-button" %> | <%= link_to 'Remove', friend, method: :delete, class: "delete-button", data: { confirm: 'Are you sure you want to delete this friend??' } %>
+			<div class= "edit_friend_form">
+			<%= render partial: "edit_friend_form", locals: {friend: friend} %>
+			</div>  
+		</div>
+	<% end %>

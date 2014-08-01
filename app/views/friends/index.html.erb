@@ -1,5 +1,7 @@
 <% if @user.friends.where(close_friend: true).size > 0 %>
-	<%= render "close_friends" %>
+	<div class="close_friends_list">
+		<%= render "close_friends_list" %>
+	</div>
 <% end %>
 
 	 

@@ -6,7 +6,7 @@
 		<%= f.phone_field :phone_number %>
 		<%= f.label :email %>
 		<%= f.text_field :email %>
-		<%= f.hidden_field :user_id, :value => @user.id %>	
+		<%= f.hidden_field :user_id, :value => current_user.id %>	
 		<%= f.submit "Edit Friend" %>
 	<% end %>
 </p>

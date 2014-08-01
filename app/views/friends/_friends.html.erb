@@ -1,17 +1,14 @@
 <% @user.friends.where(close_friend: false).order(:name).each do |friend| %>
-	<div id="<%= friend.id %>">
+	<div id="normal_friend_<%= friend.id %>", class="friend">
 	<h5><%= friend.name %></h5>
 		<!--Form for Adding to Close Friends -->
-		<div id="close_friend_button_<%=friend.id%>">
-				<%= form_for friend do |f| %>
+			<%= form_for friend, remote: true do |f| %>
 				<%= f.hidden_field :close_friend, :value=> true %>
 				<%= f.submit "Add to close friends" %>
 			<% end %>
-			<!-- end form -->
-		</div>
 			<%= link_to "Edit Friend", "", class: "edit-friend-button" %> | <%= link_to 'Remove', friend, method: :delete, class: "delete-button", data: { confirm: 'Are you sure you want to delete this friend??' } %>
 		<div class= "edit_friend_form">
 		<%= render partial: "edit_friend_form", locals: {friend: friend} %>
 		</div>  
-	</p>
+	</div>
 <% end %>			

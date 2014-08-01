@@ -12,24 +12,14 @@
  *
  *= require_tree .
  *= require_self
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+ *= require bootstrap.min
+ *= require colors/blue
+ *= require colors/green
+ *= require colors/orange
+ *= require colors/purple
+ *= require colors/red
+ *= require colors/yellow
+ *= require font-awesome.min
+ *= require magnific-popup
+ *= require main
  */
-@import "bootstrap";
-/* Some Style from the Bootstrap Default Theme */
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
-}
-
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}

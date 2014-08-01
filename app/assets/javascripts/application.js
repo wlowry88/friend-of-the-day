@@ -12,6 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap.min
+//= require html5shiv
+//= require jquery-1.10.2.min
+//= require jquery.easypiechart.min
+//= require jquery.isotope.min
+//= require jquery.magnific-popup.min
+//= require jquery.nav
+//= require jquery.scrollTo
+//= require jquery.sticky
+//= require jquery.validate
+//= require jquery.vegas.min
+//= require main
+//= require modernizr-2.6.2.min
+//= require respond.min
+//= require waypoints.min
 //= require friends
 //= require_tree .

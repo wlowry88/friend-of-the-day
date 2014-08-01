@@ -1,5 +1,5 @@
 	<h1><%= "People You're Keeping in Touch With:" %></h1>
-	<% @user.friends.select(:id, :name).where(close_friend: true).each do |friend| %>
+	<% @user.friends.select(:id, :name, :phone_number, :email).where(close_friend: true).each do |friend| %>
 		<div id="close_friend_<%= friend.id %>", class="friend">
 		<h5><%= friend.name %></h5>
 			<!--Form for Adding to Close Friends -->
@@ -9,7 +9,18 @@
 				<% end %>
 				<%= link_to "Edit Friend", "", class: "edit-friend-button" %> | <%= link_to 'Remove', friend, method: :delete, class: "delete-button", data: { confirm: 'Are you sure you want to delete this friend??' } %>
 			<div class= "edit_friend_form">
-			<%= render partial: "edit_friend_form", locals: {friend: friend} %>
+			<p>
+				<%= form_for(friend) do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+				<%= f.label :phone_number %>
+				<%= f.phone_field :phone_number %>
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>	
+				<%= f.submit "Edit Friend" %>
+				<% end %>
+				</p>
 			</div>  
 		</div>
 	<% end %>

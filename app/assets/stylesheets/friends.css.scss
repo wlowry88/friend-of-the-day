@@ -5,6 +5,9 @@
 .edit_friend_form {
 	visibility: hidden;
 }
+.edit_friend_form form {
+	display: inline;
+}
 
 .full_width {
 	 display: block;
@@ -12,5 +15,9 @@
 }
 
 #normal_friends_list {
+	visibility: hidden;
+}
+
+.edit_number_form {
 	visibility: hidden;
 }

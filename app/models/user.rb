@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
     client.account.messages.create(
     from: '+19177192242',
     to: self.phone_number,
-    body: "#{self.name}. Synonymous with Pure Greatness. Have you reached out to #{self.get_friend_of_the_day.name} lately? Press and hold :) #{self.get_friend_of_the_day.phone_number}."
+    body: "#{self.name}! Have you reached out to #{self.get_friend_of_the_day.name} lately? She's so great. Press and hold :) #{self.get_friend_of_the_day.phone_number}."
     )
   end
 

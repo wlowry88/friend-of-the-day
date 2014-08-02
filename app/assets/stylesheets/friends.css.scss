@@ -39,3 +39,12 @@
    color: black;
 }
 
+.signed_in_info {
+	text-align: right;
+	z-index: 4000;
+	display: inline-block;
+	float: right;
+	position: absolute;
+	margin-left: 25%;
+}
+

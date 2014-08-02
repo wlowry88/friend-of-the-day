@@ -11,7 +11,10 @@
 		<ul class="nav navbar-nav" id="main-menu">
 			<li><a href="#page-welcome">Home</a></li>
 			<li><a href="#page-profile">About Friend of the Day</a></li>
-			<% if logged_in? %> 
+			<% if (logged_in? && !@user.phone_number) %> 
+			<li><a href="#page-education">Add Your Number</a></li>
+			<% end %>
+			<% if logged_in? %>			
 			<li><a href="#page-skills">Add Your Friends</a></li>
 			<% end %>
 		</ul>

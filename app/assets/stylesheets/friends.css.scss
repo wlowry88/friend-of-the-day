@@ -24,8 +24,12 @@
 }
 
 #show_friends_button {
-	background-color: gray;
+	background: red;
+	border: red;
 	color: white;
+	height: 60px;
+	border-radius: 10px;
+	opacity: 0.8
 }
 
 .friend_of_the_day {
@@ -45,6 +49,6 @@
 	display: inline-block;
 	float: right;
 	position: absolute;
-	margin-left: 20%;
+	margin-left: 15%;
 }
 

@@ -1,3 +1,28 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user_phone_number{
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 10px; 
+}
+
+#user_phone_number:hover{
+  border-width: 3px;
+  border-color: #f1c40f;
+  border-style: solid;
+}
+
+#phone_submit{
+  border-radius: 10px;
+  border-style: solid;
+}
+
+#phone_submit:hover{
+  color: #f1c40f;
+  background-color: #ffffff;
+  border-color: #f1c40f;
+  border-style: solid;
+
+}

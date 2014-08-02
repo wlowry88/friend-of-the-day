@@ -1,124 +1,41 @@
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		</button>
-	</div>
-	<div class="navbar-collapse collapse">
-		<ul class="nav navbar-nav" id="main-menu">
-			<li><a href="#page-welcome">Home</a></li>
-			<li><a href="#page-profile">About Friend of the Day</a></li>
-			<% if logged_in? %> 
-			<li><a href="#page-skills">Add Your Friends</a></li>
-			<% end %>
-		</ul>
-				<% if current_user %>
-		<div class="signed_in_info">
-			Signed in as <strong><%= current_user.name %></strong>! <br>
-			<%= link_to "Your Settings", "", class:"settings_button" %> | 
-			<%= link_to "Sign out", signout_path, id: "sign_out" %>
-			<div class= "edit_number_form">
-				<h4>You can update your number here if you need to: </h4>
-				<%= form_for @user do |f| %>
-				<%= f.label :phone_number %><br>
-				<%= f.telephone_field :phone_number, placeholder: "+12128888888" %>
-				<%= f.submit %>
-				<% end %>
-			</div>
-			<% end %>
-		</div>
-	</div><!--/.nav-collapse -->
+<%= render 'navbar' %>
+<%= render 'homepage' %>
+<div class="container">
+	<%= render 'about' %>
 </div>
 
-	<!-- welcome begins -->
-	<section id="page-welcome" class="page-welcome">
-		<div>
-			<ul class="slider-controls">
-				<li><a id="vegas-next" class="next" href="#"></a></li>
-				<li><a id="vegas-prev" class="prev" href="#"></a></li>
-			</ul>
-		</div>
-		<div class="container">
-			<div class="row">
-				<header class="centered">
-					<h1>FRIEND OF THE DAY</h1>
-					<p>REMINDS YOU TO KEEP IN TOUCH WITH YOUR FRIENDS</p>
-				</header>
-				<%= link_to "LEARN MORE", "#page-profile", id: "get_started", class: "btn btn-default hire-me"%>
-				<%= link_to "LOG IN with Google", "/auth/google_oauth2", id: "sign_in", class: "btn btn-default hire-me"%>
-				<!-- <a href="#page-profile" class="btn btn-default hire-me">Get Started</a> -->
-			</div>
-		</div>
-		</section><!-- welcome ends -->
-		<!-- profile begins -->
-	<div class="container">
-		<section id="page-profile" class="page-profile">
-      <div class="container">
-                <header class="section-header">
-                    <h4 class="section-title">Staying In Touch Made Easy</h4>
-                    <div class="spacer"></div>
-                    <p class="section-subtitle">Don't you wish you stayed in better touch with your friends? Friend Of the Day is the answer. </p>
-                </header>
-            <div class="row">
-              <div class="col-md-3" id="pic_img">
-                 <div class="profile"><img src="img/profile.png" alt="profile"/></div> 
-              </div>
-               <div class="col-md-9" id="about_page">
-                <p>1. You enter your number and Friend Of the Day pulls in your contacts.</p>
-                <p>2. You pick friends you wish you kept in touch with more often.</p>
-                <p>3. You'll get a text once a day reminding you to get in touch.</p>
-                <p>4. Once we've gone through the entire list, it starts over again in random order!</p>
-                <p>5. Your friend's number is in the text, so you just press, hold, and send a text.</p>
-               	<p>6. What a good friend you are. <%= link_to "Log in with Google","/auth/google_oauth2" %>  to get started!"</p>
-              </div>
-            </div>
-      </div> 
-    </section><!-- profile ends -->
-    <!-- skills begins -->
-
-		</div>
-		
-		<% if logged_in? %>
-		<div class="container">
-			<section id="page-skills" class="page-skills">
-				<div class="friend_page">
-					<% if current_user.get_friend_of_the_day %>
-					<div class="friend_of_the_day"> <!---Friend of the Day -->
+<% if logged_in? %>
+<div class="container">
+	<section id="page-skills" class="page-skills">
+		<div class="friend_page">
+			<% if current_user.get_friend_of_the_day %>
+				<div class="friend_of_the_day"> 
 					<% random_friend = @friend_of_the_day %>
-					
 					<h1>Have you reached out to <%= random_friend.name %> lately?</h1>
 					<p>Phone number: <%= random_friend.phone_number%></p>
-					<% if random_friend.email != "Not provided" %>
-					<p>Email: <%= mail_to "#{random_friend.email}" %></p>
-					<% end %>
-				</div>
+				<% if random_friend.email != "Not provided" %>
+						<p>Email: <%= mail_to "#{random_friend.email}" %></p>
 				<% end %>
-				<% if @user.friends.where(close_friend: true).size > 0 %>
-				<div class="close_friends_list full_width">
-					<%= render "close_friends_list" %>
 				</div>
-				<% else %>
-				<div class="close_friends_list full_width"></div>
-				<% end %>
-				<% end %>
-				<br>
-				<!-- 	<div class="full_width"> -->
-				<% if logged_in? %>
-				<div class="full_width">
-					<button class="btn.btn-default" id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
+			<% end %>
+		<% if @user.friends.where(close_friend: true).size > 0 %>
+			<div class="close_friends_list full_width">
+				<%= render "close_friends_list" %>
+			</div>
+		<% else %>
+			<div class="close_friends_list full_width"></div>
+		<% end %>
+			<div class="full_width">
+				<button class="btn.btn-default" id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
+			</div>
+			<div id="normal_friends_list">
+				<div id="new_friend_form">
+					<h3>Or, Add A new Friend</h3>
+					<%= render "new_friend_form" %>
 				</div>
-				<!-- 	</div> -->
-				
-				<div id="normal_friends_list">
-					<div id="new_friend_form">
-						<h3>Or, Add A new Friend</h3>
-						<%= render "new_friend_form" %>
-					</div>
 					<%= render "friends" %>
-				</div>
-				<% end %>
 			</div>
 		</div>
+	</section>
+</div>
+<% end %>

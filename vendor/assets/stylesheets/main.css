@@ -134,7 +134,15 @@ background-color: transparent;
 #about_page {
   font-size: 20px;
   padding-left: 40px;
+  width: 70%;
 }
+
+#about_page p {
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+
 
 #pic_img {
   padding-left: 40px;

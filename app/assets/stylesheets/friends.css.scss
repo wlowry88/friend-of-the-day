@@ -53,6 +53,15 @@
 	display: inline-block;
 	float: right;
 	position: absolute;
-	margin-left: 15%;
+	margin-left: 8%;
+	margin-top: .5%;
+	text-align: left;
 }
+
+.settings_button:hover ,
+#sign_out:hover	{
+	text-decoration: none;
+	font-weight: bold;
+}
+
 

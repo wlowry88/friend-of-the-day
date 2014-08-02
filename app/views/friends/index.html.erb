@@ -46,6 +46,7 @@
 					<p>REMINDS YOU TO KEEP IN TOUCH WITH YOUR FRIENDS</p>
 				</header>
 				<%= link_to "GET STARTED", "#page-profile", id: "get_started", class: "btn btn-default hire-me"%>
+				<%= link_to "LOG IN with Google", "/auth/google_oauth2", id: "sign_in", class: "btn btn-default hire-me"%>
 				<!-- <a href="#page-profile" class="btn btn-default hire-me">Get Started</a> -->
 			</div>
 		</div>
@@ -66,9 +67,10 @@
                <div class="col-md-9" id="about_page">
                 <p>1. You enter your number and Friend Of the Day pulls in your contacts.</p>
                 <p>2. You pick friends you wish you kept in touch with more often.</p>
-                <p>3. You'll get a text once a day reminding you to get in touch with one of your close friends! </p>
+                <p>3. You'll get a text once a day reminding you to get in touch.</p>
                 <p>4. Once we've gone through the entire list, it starts over again in random order!</p>
-                <p>4. Your friend's number is in the text, so you just press, hold, and send a text. What a good friend you are!</p>
+                <p>5. Your friend's number is in the text, so you just press, hold, and send a text.</p>
+               	<p>6. What a good friend you are!</p>
               </div>
             </div>
       </div> 
@@ -118,4 +120,3 @@
 				<% end %>
 			</div>
 		</div>
-		<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: "btn btn-default hire-me"%>

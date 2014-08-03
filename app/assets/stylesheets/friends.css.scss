@@ -28,12 +28,21 @@
 }
 
 #show_friends_button {
-	background: red;
-	border: red;
+	background: rgba(64,63,63, 0.85);
 	color: white;
 	height: 60px;
-	border-radius: 10px;
-	opacity: 0.8
+	margin: 30px 0px 30px 0px;
+	width: 100%;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#show_friends_button:hover {
+	background: #ffffff;
+	border-color: #f1c40f;
+	border-style: solid;
+	border-width: 2px;
+	color: rgb(64,63,63);
 }
 
 .friend_of_the_day {

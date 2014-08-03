@@ -21,7 +21,7 @@ $(function(){
   $("#show_friends_button").on("click", function(e){
   	e.preventDefault;
     $("#normal_friends_list").css("visibility", "visible").toggle();
-    $("body").scrollTo(1700, {duration: 1000});
+    $("body").scrollTo("#show_friends_button", {duration: 1000});
   });
 
   $(".friend_of_the_day").css("visibility", "visible").fadeIn(1500);

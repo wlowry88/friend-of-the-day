@@ -3,7 +3,7 @@
 
 <div class="container">
 	<%= render 'about' %>
-	<% if current_user && !current_user.phone_number %>
+	<% if current_user && current_user.phone_number %>
 		<%= render partial: "new_number_form", locals: {user: @user} %>
 	<% end %>
 </div>

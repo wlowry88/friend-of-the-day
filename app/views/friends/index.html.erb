@@ -3,7 +3,7 @@
 
 <div class="container">
 	<%= render 'about' %>
-	<% if current_user && current_user.phone_number %>
+	<% if current_user && !current_user.phone_number %>
 		<%= render partial: "new_number_form", locals: {user: @user} %>
 	<% end %>
 </div>
@@ -33,8 +33,8 @@
 				<button class="btn.btn-default" id="show_friends_button">Add Friends You Want To Be Reminded To Keep in Touch With</button>
 			</div>
 			<div id="normal_friends_list">
+					<h3>Or, <%= link_to "Add a New Friend", "", class: "new_friend_button" %></h3>
 				<div id="new_friend_form">
-					<h3>Or, Add A new Friend</h3>
 					<%= render "new_friend_form" %>
 				</div>
 					<%= render "friends" %>

@@ -3,6 +3,7 @@ $(function(){
   $("#normal_friends_list").hide();
   $(".edit_number_form").hide();
   $(".friend_of_the_day").hide();
+  $("#new_friend_form").hide();
 
   $(".close_friends_list").on("click", ".edit-friend-button", function(e){
     e.preventDefault();
@@ -28,6 +29,16 @@ $(function(){
 
   $("#phone_submit").on("click", function(e){
     e.preventDefault();
-    alert("Are you sure you want to submit your number");
+    confirm("Are you sure you want to submit your number?");
+  });
+  $("#phone_edit").on("click", function(e){
+    e.preventDefault();
+    confirm("Are you sure you want to edit your number?");
+  });
+
+  $(".new_friend_button").on("click", function(e){
+    e.preventDefault();
+    $("#new_friend_form").css("visibility", "visible").slideToggle();
+
   })
 });

@@ -8,6 +8,7 @@
       </header>
 			<div class= "new_number_form">
 				<h2>
+					<%= notice %>
 					<%= form_for user do |f| %>
 					<%= f.telephone_field :phone_number, placeholder: "+12128888888" %><br>
 					<%= f.submit id:"phone_submit" %>

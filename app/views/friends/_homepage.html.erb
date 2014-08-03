@@ -11,8 +11,12 @@
 				<h1>FRIEND OF THE DAY</h1>
 				<p>REMINDS YOU TO KEEP IN TOUCH WITH YOUR FRIENDS</p>
 			</header>
+			<% if !logged_in? %>
 			<%= link_to "LEARN MORE", "#page-profile", id: "get_started", class: "btn btn-default hire-me"%>
 			<%= link_to "LOG IN with Google", "/auth/google_oauth2", id: "sign_in", class: "btn btn-default hire-me"%>
+			<% else %>
+			<%= link_to "ADD FRIENDS AND GET STARTED", "#page-skills", id: "get_started", class: "btn btn-default hire-me"%>
+			<% end %>
 			<!-- <a href="#page-profile" class="btn btn-default hire-me">Get Started</a> -->
 		</div>
 	</div>

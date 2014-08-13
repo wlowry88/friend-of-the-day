@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
 .edit_friend_form {
 	visibility: hidden;
 }
@@ -43,7 +45,7 @@
 	color: white;
 	height: 60px;
 	margin: 30px 0px 30px 0px;
-	width: 100%;
+	width: 55%;
 	font-weight: bold;
 	font-size: 18px;
 }

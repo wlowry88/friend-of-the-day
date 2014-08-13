@@ -6,12 +6,13 @@
 /* ==========================================================================
    Base styles
    ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
 
 html, body {
     height: 100%;
     width: 100%;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    color:#757575;
+    font-family: 'Lato', 'Helvetica', Arial, sans-serif;
+    color:#333;
 }
 
 img { 
@@ -32,12 +33,13 @@ a img {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Avenir', sans-serif;
-    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+
 }
 
 p {
-    font-family: 'Avenir', 'sans-serif';
+    font-family: 'Lato', 'sans-serif';
 }
 
 footer {
@@ -46,7 +48,7 @@ footer {
     margin: 10px;
     color: white;
     font-size: 16px;
-    font-family: Avenir;
+    font-family: Lato;
 }
 
 /* ==========================================================================
@@ -135,6 +137,7 @@ background-color: transparent;
 #page-profile{
     padding: 75px 0;
     background:#fff;
+    opacity: 0.9;
 }
 
 #page-profile .profile{
@@ -657,6 +660,9 @@ label.valid{
 
 }
 
+#main_title {
+  color: white;
+}
 
 
 

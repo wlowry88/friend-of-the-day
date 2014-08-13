@@ -28,7 +28,6 @@ $(function(){
   $(".friend_of_the_day").css("visibility", "visible").fadeIn(1500);
 
   $("#phone_submit").on("click", function(e){
-    e.preventDefault();
     confirm("Are you sure you want to submit your number?");
   });
   $("#phone_edit").on("click", function(e){

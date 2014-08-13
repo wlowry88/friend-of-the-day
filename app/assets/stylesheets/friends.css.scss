@@ -41,13 +41,17 @@
 }
 
 #show_friends_button {
-	background: rgba(64,63,63, 0.85);
-	color: white;
+	background: white;
+	color: #333;
+	font-family: "Lato";
 	height: 60px;
 	margin: 30px 0px 30px 0px;
 	width: 55%;
 	font-weight: bold;
 	font-size: 18px;
+	border-radius: 3px;
+	border: 2px solid #ddd;
+ 
 }
 
 #show_friends_button:hover {

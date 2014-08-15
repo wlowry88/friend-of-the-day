@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
     client.account.messages.create(
     from: '+19177192242',
     to: self.phone_number,
-    body: "Whatup! Your phone number just got updated."
+    body: "Welcome to Friend of the Day! Your phone was just updated :)"
     )
   end
 

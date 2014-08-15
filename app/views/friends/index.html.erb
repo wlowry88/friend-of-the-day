@@ -15,7 +15,8 @@
 			<% if current_user.get_friend_of_the_day %>
 				<div class="friend_of_the_day"> 
 					<% random_friend = @friend_of_the_day %>
-					<h1>Have you reached out to <%= random_friend.name %> lately?</h1>
+					<h1><%="#{current_user.name.split[0]}, have you reached out to #{random_friend.name} lately?" %>
+					</h1>
 					<p>Phone number: <%= random_friend.phone_number%></p>
 				<% if random_friend.email != "Not provided" %>
 						<p>Email: <%= mail_to "#{random_friend.email}" %></p>

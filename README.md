@@ -1,4 +1,6 @@
-# Mnemonic
+# Friend of the Day
+
+[![Code Climate](https://codeclimate.com/github/wlowry88/friend-of-the-day/badges/gpa.svg)](https://codeclimate.com/github/wlowry88/friend-of-the-day)
 
 ## Description
 
@@ -37,4 +39,4 @@ Link to your blog, twitter, etc!
 
 ## License
 
-Mnemonic is MIT Licensed. See LICENSE for details.
+Friend of the Day is MIT Licensed. See LICENSE for details.
